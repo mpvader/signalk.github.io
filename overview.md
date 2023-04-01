@@ -4,28 +4,31 @@ layout: rsidebar
 overview: active
 sidebar: overview-sb.html
 description:
-  "With the release of v1.0.0, Signal K is the next generation solution for marine data exchange. It not only allows
+  "The Signal K data standard is the next generation solution for marine data exchange. It not only allows
   for communication between instruments and sensors on board a single vessel, but also to allow for sharing of data
   between multiple boats, aids to navigation, bridges, marinas and more."
 ---
 
 ## [Introduction](#) <a class="anchor" id="introduction"></a>
-Signal K is the next generation solution for marine data exchange. It not only allows for communication between
-instruments and sensors on board a single vessel, but also allows sharing of data between multiple boats, aids to
-navigation, bridges, marinas and other land-based resources. It is designed to be easily used by Web and Mobile
-applications and to connect modern boats to the Internet of Things.
+The Signal K Data Standard is an open marine data standard. It is a modern data format for marine use, suitable for WiFi,
+cellphones, tablets and the internet. It is built on standard web technologies including JSON, WebSockets and HTTP.
+
+It not only allows for communication between instruments and sensors on board a single vessel, but also allows sharing
+of data between multiple boats, aids to navigation, bridges, marinas and other land-based resources. It is designed
+to be easily used by Web and Mobile applications and to connect boats to the Internet of Things.
+
+It complements the other two popular marine data protocols, NMEA 0183 and NMEA 2000.
 
 ## [Background](#) <a class="anchor" id="background"></a>
-In the last few years, it has become clear that there is a real need for a new communications protocol for the marine
-industry that will address the needs of a changing and ever more interconnected world. There are a number of existing
-marine data protocols, some that are proprietary such as Raymarine's SeaTalk interface, but the two most popular were
-both developed by the [National Marine Electronics Association](http://www.nmea.org/) (the NMEA):-
+To explain its place and need, lets first have look at the other marine data protocols. Some are proprietary such
+as Raymarine's SeaTalk interface, but the two most popular were both developed by the
+[National Marine Electronics Association](http://www.nmea.org/) (NMEA):
 
 ### NMEA 0183
-Based on the RS422 serial interface, is now over 35 years old but has aged remarkably well and is still in use on many
-leisure and commercial vessels. As you can see from the diagram, you have to have lots of pairs of wires going between
+Based on the RS422 serial interface, NMEA 0183 is now over 35 years old but has aged remarkably well and is still in use on many
+leisure and commercial vessels. As you can see from the diagram, it works by having lots of pairs of wires going between
 equipment, in fact two pairs of wires if you want bi-directional communication. It is primarily a one to one method of
-communication although you can have 3 or 4 “listeners” (inputs) connected to one “talker” (output).
+communication although you can have 3 or 4 “listeners” connected to one “talker”.
 
 <figure>
   <img src="/images/diagrams/Typical_NMEA0183_Diagram.png" width="400">
@@ -33,9 +36,9 @@ communication although you can have 3 or 4 “listeners” (inputs) connected to
 </figure>
 
 ### NMEA 2000
-Based on the same CAN Bus technology used in cars, is now over 15 years old and although adoption was relatively slow,
-most new boats have an NMEA 2000 network. It can handle a wide spread of information sources from engines to stereos
-and is faster that NMEA0183 but more difficult to interface to.
+Based on the same CAN Bus technology used in cars, NMEA 2000 is now over 15 years old and
+most new boats have an NMEA 2000 network. It can handle a wide spread of information sources from engines to stereos.
+It is faster than NMEA0183, but more difficult to interface to.
 
 As you can see from the diagram, you have a network “back bone” with “spurs” or drop cables that take power and data to
 the equipment. Every device on the network can talk or listen to any other device or broadcast to all devices.
@@ -45,16 +48,20 @@ the equipment. Every device on the network can talk or listen to any other devic
   <figcaption>Typical NMEA 2000 Implementation</figcaption>
 </figure>
 
-For developers of modern mobile/web apps and cloud services, there are two main problems with the existing standards.
+These existing standards serve their purpose to connect marine sensors and display units. But when it comes to development
+of modern mobile and web apps, as well as cloud services, they are not suitable.
 
-### Technical
-Both standards are fundamentally local area serial networks designed for limited deployments in simple environments.
+Here are their two main limitations:
+
+### Technical limitations
+Both standards are fundamentally local area networks designed for limited deployments.
 NMEA 0183 is normally limited to 4800 baud (or 34,800bps in high speed mode) and one transmitting device. NMEA 2000
 works at a significantly higher bit-rate (250kbps) and allows multiple devices to transmit on one shared bus, but it is
-limited to 50 devices on a bus. These decisions may have been perfectly rational twenty or thirty years ago, but today
-we need something more capable and extensible.
+limited to 50 devices on a bus.
 
-### Legal
+By their nature, both protocols are difficult to connect to WiFi, phones, tablets and internet.
+
+### Legal limitations
 Although all NMEA standards are published and available for use by any developer and therefore are technically “open
 standards”, anyone wishing to use them must not only pay for the standards but also sign a license agreement which
 restricts how they can be used and in the case of NMEA 2000, a non-disclosure agreement. Hardware manufacturers are
@@ -67,10 +74,10 @@ cost of entry for smaller developers.
   <figcaption>Technical and Legal Barriers</figcaption>
 </figure>
 
-Finally, and most importantly, both NMEA standards and the other proprietary protocols in the industry were developed
-when the instruments on the average boat were much simpler and much less capable. In a world where your home thermostat
-is connected to the Internet and the number of worldwide Internet connected devices is projected to exceed 70 billion
-by 2025, it seems archaic that your boat is still an island to itself.
+## [The Internet of Things](#) <a class="anchor" id="IoT"></a>
+In a world where even your home thermostat can be connected to the Internet, and the number of worldwide
+internet connected devices is projected to exceed 70 billion by 2025, there is no more need for your boat
+to be an island to itself.
 
 After all, there are lots of other boats out there, and lots of other sources of information, all of which could be of
 interest and benefit to you. In the modern connected world, shouldn’t you be able to access that information from your
@@ -80,7 +87,6 @@ To move forward we need to think in a connected way, a way fundamentally differe
 Microsystems famously coined the phrase _The network is the computer_, and Signal K reflects that global peer-to-peer
 concept.
 
-## [The Internet of Things](#) <a class="anchor" id="IoT"></a>
 The ability to share information with other boats, and via the Internet, has the potential to revolutionise the way
 nautical data is treated both afloat and ashore. Applications will be limited only by developers' imagination, but
 could include:
@@ -113,7 +119,7 @@ Signal K coupled with your own good security practices like strong passwords and
 router, will keep your data safe.
 
 ## [Signal K](#) <a class="anchor" id="signalk"></a>
-Signal K uses modern techniques to create a marine data standard for the 21st Century. It is:
+The Signal K data standard is based on  modern techniques, creating a marine data standard for the 21st Century. It is:
 
 * Open. Signal K is managed by a community of boaters, and developers are able to propose
   improvements to the standard.
@@ -122,6 +128,7 @@ Signal K uses modern techniques to create a marine data standard for the 21st Ce
 * Extensible. It can mature with new requirements as they emerge.
 * Flexible. Signal K is not tied to specific hardware
 * Respectful. It is designed to interface to existing equipment and protocols.
+* Proven. Several commercial vendors have adopted the Signal K data standard; and thousands of boaters are using it daily.
 
 It is easy to get started with Signal K. With a Google Group for users, Slack Channels for developers, lots of online
 information, low cost hardware and many free or low costs apps and solutions, you can quickly build a system and start
