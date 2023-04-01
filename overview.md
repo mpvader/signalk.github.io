@@ -10,14 +10,14 @@ description:
 ---
 
 ## [Introduction](#) <a class="anchor" id="introduction"></a>
-The Signal K Data Standard is an open marine data standard. It is a modern data format for marine use, suitable for WiFi,
+The Signal K data standard is an open marine data standard. It is a modern data format for marine use, suitable for WiFi,
 cellphones, tablets and the internet. It is built on standard web technologies including JSON, WebSockets and HTTP.
 
 It not only allows for communication between instruments and sensors on board a single vessel, but also allows sharing
 of data between multiple boats, aids to navigation, bridges, marinas and other land-based resources. It is designed
 to be easily used by Web and Mobile applications and to connect boats to the Internet of Things.
 
-It complements the other two popular marine data protocols, NMEA 0183 and NMEA 2000.
+With all above, the Signal K data standard complements the other two popular marine data protocols, NMEA 0183 and NMEA 2000.
 
 ## [Background](#) <a class="anchor" id="background"></a>
 To explain its place and need, lets first have look at the other marine data protocols. Some are proprietary such
